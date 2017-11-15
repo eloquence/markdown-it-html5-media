@@ -1,0 +1,48 @@
+Render video without attributes
+.
+![](video.mp4)
+.
+<p><video src="video.mp4" controls class="html5-video-player">
+Your browser does not support playing HTML5 video.
+You can <a href="video.mp4" download>download the file</a> instead.
+</video></p>
+.
+Render audio without attributes
+.
+![](audio.mp3)
+.
+<p><audio src="audio.mp3" controls class="html5-audio-player">
+Your browser does not support playing HTML5 audio.
+You can <a href="audio.mp3" download>download the file</a> instead.
+</audio></p>
+.
+Render video with description and title
+.
+![description](video.webm "hover text")
+.
+<p><video src="video.webm" title="hover text" controls class="html5-video-player">
+Your browser does not support playing HTML5 video.
+You can <a href="video.webm" download>download the file</a> instead.
+Here is a description of the content: description
+</video></p>
+.
+Escape HTML in attributes
+.
+![<script src="evil.js">"description"](vid>eo.webm "hover <text>")
+.
+<p><video src="vid%3Eeo.webm" title="hover &lt;text&gt;" controls class="html5-video-player">
+Your browser does not support playing HTML5 video.
+You can <a href="vid%3Eeo.webm" download>download the file</a> instead.
+Here is a description of the content: &lt;script src=&quot;evil.js&quot;&gt;&quot;description&quot;
+</video></p>
+.
+Render video as link
+.
+[![some text](video.mp4 "some title")](http://www.example.com/)
+.
+<p><a href="http://www.example.com/"><video src="video.mp4" title="some title" controls class="html5-video-player">
+Your browser does not support playing HTML5 video.
+You can <a href="video.mp4" download>download the file</a> instead.
+Here is a description of the content: some text
+</video></a></p>
+.

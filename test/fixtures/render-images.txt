@@ -1,0 +1,36 @@
+Render image without attributes
+.
+![](image.jpg)
+.
+<p><img src="image.jpg" alt=""></p>
+.
+Render image with alt text
+.
+![alt text](image.jpg)
+.
+<p><img src="image.jpg" alt="alt text"></p>
+.
+Render image with title
+.
+![](image.jpg "hover text")
+.
+<p><img src="image.jpg" alt="" title="hover text"></p>
+.
+Render image URL of unknown type with title and alt text
+.
+![alt text](https://example.com/counter "hover text")
+.
+<p><img src="https://example.com/counter" alt="alt text" title="hover text"></p>
+.
+Escape HTML in attributes
+.
+![alt "text"](image.jpg "hover <'text'>")
+.
+<p><img src="image.jpg" alt="alt &quot;text&quot;" title="hover &lt;'text'&gt;"></p>
+.
+Render image as link
+.
+[![alt text](image.jpg "hover text")](http://example.com/)
+.
+<p><a href="http://example.com/"><img src="image.jpg" alt="alt text" title="hover text"></a></p>
+.

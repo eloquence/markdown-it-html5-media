@@ -1,0 +1,22 @@
+{
+  "name": "markdown-it-html5-media",
+  "version": "0.5.0",
+  "description": "Lightweight support for HTML5 video/audio using markdown image syntax",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha"
+  },
+  "keywords": [
+    "markdown-it-plugin",
+    "markdown-it"
+  ],
+  "author": "Erik Moeller",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "markdown-it": "^8.4.0"
+  },
+  "devDependencies": {
+    "markdown-it-testgen": "^0.1.4",
+    "mocha": "^4.0.1"
+  }
+}

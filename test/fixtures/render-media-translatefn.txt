@@ -1,0 +1,28 @@
+Render video without attributes
+.
+![](video.mp4)
+.
+<p><video src="video.mp4" controls class="html5-video-player">
+No translation for html5 video not supported
+No translation for html5 media fallback link with parameter(s) video.mp4
+</video></p>
+.
+Render audio without attributes
+.
+![](audio.mp3)
+.
+<p><audio src="audio.mp3" controls class="html5-audio-player">
+No translation for html5 audio not supported
+No translation for html5 media fallback link with parameter(s) audio.mp3
+</audio></p>
+.
+Render video with description and title
+.
+![desc](video.webm "hover text")
+.
+<p><video src="video.webm" title="hover text" controls class="html5-video-player">
+No translation for html5 video not supported
+No translation for html5 media fallback link with parameter(s) video.webm
+No translation for html5 media description with parameter(s) desc
+</video></p>
+.

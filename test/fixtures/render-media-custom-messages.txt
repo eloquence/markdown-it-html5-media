@@ -1,0 +1,28 @@
+Render video without attributes
+.
+![](video.mp4)
+.
+<p><video src="video.mp4" controls class="html5-video-player">
+Cannot play video.
+"video.mp4" was the filename
+</video></p>
+.
+Render audio without attributes
+.
+![](audio.mp3)
+.
+<p><audio src="audio.mp3" controls class="html5-audio-player">
+Cannot play audio.
+"audio.mp3" was the filename
+</audio></p>
+.
+Render video with description and title
+.
+![description](video.webm "hover text")
+.
+<p><video src="video.webm" title="hover text" controls class="html5-video-player">
+Cannot play video.
+"video.webm" was the filename
+"description" was the description
+</video></p>
+.
