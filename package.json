@@ -17,7 +17,7 @@
     "markdown-it-plugin",
     "markdown-it"
   ],
-  "author": "Erik Moeller <eloquence@gmail.com>",
+  "author": "Erik Moeller <eloquence@gmail.com> (https://twitter.com/xirzon)",
   "license": "CC0-1.0",
   "dependencies": {
     "markdown-it": "^8.4.0"
