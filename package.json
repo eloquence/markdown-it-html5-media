@@ -6,7 +6,12 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha",
-    "make-docs": "node_modules/jsdoc/jsdoc.js -r lib/ -c jsdocConf.json -d docs/"
+    "docs": "jsdoc -r lib/ -c jsdocConf.json -d docs/",
+    "babel": "babel lib -d build",
+    "bundle": "browserify build/index.js --standalone html5Media -o build/markdown-it-html5-media.js",
+    "uglify": "uglifyjs build/markdown-it-html5-media.js -o build/markdown-it-html5-media.min.js",
+    "build": "npm run babel && npm run bundle && npm run uglify",
+    "dist": "npm run build && cp build/markdown-it-html5-media.* dist/"
   },
   "keywords": [
     "markdown-it-plugin",
@@ -18,9 +23,13 @@
     "markdown-it": "^8.4.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browserify": "^14.5.0",
     "jsdoc": "^3.5.5",
     "markdown-it-testgen": "^0.1.4",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "uglify-js": "^3.1.9"
   },
   "engines": {
     "node": ">=6.0"

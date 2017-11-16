@@ -12,6 +12,7 @@ Key differences:
   for working with, e.g., rich text editors that process these tokens)
 - No library dependency for file type detection, just a simple extension check
   for commonly used video/audio formats.
+- Transpiled version: 10KB unminified vs. 169KB unminified
 
 ## Basic usage
 
@@ -131,7 +132,12 @@ function translateFn(language, messageKey, messageParams) {
 
 ## Anything else?
 
+The module is written in modern JavaScript. The version in `dist/` is transpiled
+down to ES5 compatible with recent browsers. Use `npm run build` to update the
+build.
+
 You can find the automatically generated documentation [here](https://eloquence.github.io/markdown-it-html5-media/HTML5Media.html).
+Use `npm run docs` to regenerate it.
 
 This library overrides Markdown-It's image tokenizer, which means that it
 duplicates portions of that particular Markdown-It code. If you can think of a
