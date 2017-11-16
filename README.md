@@ -1,4 +1,6 @@
 # markdown-it-html5-media
+![](https://travis-ci.org/eloquence/markdown-it-html5-media.svg?branch=master)
+
 Minimalist &lt;video>/&lt;audio> plugin for markdown-it, using image syntax.
 
 Inspired by [markdown-it-html5-embed](https://github.com/cmrd-senya/markdown-it-html5-embed).
