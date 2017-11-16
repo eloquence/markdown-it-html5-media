@@ -131,6 +131,8 @@ function translateFn(language, messageKey, messageParams) {
 
 ## Anything else?
 
+You can find the automatically generated documentation [here](https://eloquence.github.io/markdown-it-html5-media/HTML5Media.html).
+
 This library overrides Markdown-It's image tokenizer, which means that it
 duplicates portions of that particular Markdown-It code. If you can think of a
 better way to do what it does without scanning the whole token stream, please go
