@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha",
-    "make-docs": "node_modules/jsdoc/jsdoc.js -r lib/ -c jsdocConf.json -d build/docs"
+    "make-docs": "node_modules/jsdoc/jsdoc.js -r lib/ -c jsdocConf.json -d docs/"
   },
   "keywords": [
     "markdown-it-plugin",
