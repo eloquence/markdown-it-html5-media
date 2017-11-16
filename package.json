@@ -5,7 +5,7 @@
   "repository": "https://github.com/eloquence/markdown-it-html5-media.git",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha",
+    "test": "mocha",
     "docs": "jsdoc -r lib/ -c jsdocConf.json -d docs/",
     "babel": "babel lib -d build",
     "bundle": "browserify build/index.js --standalone html5Media -o build/markdown-it-html5-media.js",
