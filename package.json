@@ -5,7 +5,8 @@
   "repository": "https://github.com/eloquence/markdown-it-html5-media.git",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha"
+    "test": "node_modules/mocha/bin/mocha",
+    "make-docs": "node_modules/jsdoc/jsdoc.js -r lib/ -c jsdocConf.json -d build/docs"
   },
   "keywords": [
     "markdown-it-plugin",
@@ -17,6 +18,7 @@
     "markdown-it": "^8.4.0"
   },
   "devDependencies": {
+    "jsdoc": "^3.5.5",
     "markdown-it-testgen": "^0.1.4",
     "mocha": "^4.0.1"
   },
