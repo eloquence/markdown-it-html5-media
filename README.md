@@ -134,10 +134,11 @@ function translateFn(language, messageKey, messageParams) {
 
 The module is written in modern JavaScript. The version in `dist/` is transpiled
 down to ES5 compatible with recent browsers. Use `npm run build` to update the
-build.
+build (does not change contents of `dist`; use `npm run dist` to build & dist).
 
 You can find the automatically generated documentation [here](https://eloquence.github.io/markdown-it-html5-media/HTML5Media.html).
-Use `npm run docs` to regenerate it.
+Use `npm run docs` to regenerate it (changes contents of `docs`, which is
+tracked).
 
 This library overrides Markdown-It's image tokenizer, which means that it
 duplicates portions of that particular Markdown-It code. If you can think of a
