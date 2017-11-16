@@ -59,7 +59,7 @@ You can <a href="audio.mp3" download>download the file</a> instead.
 
 ## Custom messages
 
-You can customize the fallback text. This text will only be shown to users whose browser does not support HTML5 video or audio at all. %s is used as a substitution marker for the filename or the description..
+You can customize the fallback text. This text will only be shown to users whose browser does not support HTML5 video or audio at all. %s is used as a substitution marker for the filename or the description.
 
 ````javascript
 // Init as above
@@ -80,8 +80,9 @@ md.use(html5Media, {
 console.log(md.render('![text](video.mp4)'));
 ````
 
-````html
 Output:
+
+````html
 <p><video src="video.mp4" controls class="html5-video-player">
 Cannot play video.
 Download <a href="video.mp4">file</a>.
