@@ -261,7 +261,7 @@ function guessMediaType(url) {
   var extensionMatch = url.match(/\.([^/.]+)$/);
   if (extensionMatch === null) return 'image';
   var extension = extensionMatch[1];
-  if (validAudioExtensions.indexOf(extension) != -1) return 'audio';else if (validVideoExtensions.indexOf(extension) != -1) return 'video';else return 'image';
+  if (validAudioExtensions.indexOf(extension.toLowerCase()) != -1) return 'audio';else if (validVideoExtensions.indexOf(extension.toLowerCase()) != -1) return 'video';else return 'image';
 }
 
 /**
@@ -338,9 +338,10 @@ function html5Media(md) {
   };
 }
 
-// For partial customization of messages
-html5Media.messages = messages;
-
-module.exports = html5Media;
+module.exports = {
+  html5Media: html5Media,
+  messages: messages, // For partial customization of messages
+  guessMediaType: guessMediaType
+};
 },{}]},{},[1])(1)
 });
