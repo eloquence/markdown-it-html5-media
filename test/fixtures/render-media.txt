@@ -16,6 +16,15 @@ Your browser does not support playing HTML5 audio.
 You can <a href="audio.mp3" download>download the file</a> instead.
 </audio></p>
 .
+Ensure extension detection is case-insensitive
+.
+![](audio.Mp3)
+.
+<p><audio src="audio.Mp3" controls class="html5-audio-player">
+Your browser does not support playing HTML5 audio.
+You can <a href="audio.Mp3" download>download the file</a> instead.
+</audio></p>
+.
 Render video with description and title
 .
 ![description](video.webm "hover text")

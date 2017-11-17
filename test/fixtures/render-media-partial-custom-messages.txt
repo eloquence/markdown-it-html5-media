@@ -1,0 +1,18 @@
+Render video without attributes
+.
+![](video.mp4)
+.
+<p><video src="video.mp4" controls class="html5-video-player">
+CANNOT PLAY VIDEO.
+You can <a href="video.mp4" download>download the file</a> instead.
+</video></p>
+.
+Render audio without attributes
+.
+![](audio.mp3)
+.
+<p><audio src="audio.mp3" controls class="html5-audio-player">
+Your browser does not support playing HTML5 audio.
+You can <a href="audio.mp3" download>download the file</a> instead.
+</audio></p>
+.

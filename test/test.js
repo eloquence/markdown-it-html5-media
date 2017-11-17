@@ -2,7 +2,7 @@
 'use strict';
 const assert = require('assert');
 const MarkdownIt = require('markdown-it');
-const html5Media = require('../lib/index.js');
+const { html5Media } = require('../lib/index.js');
 const path = require('path');
 const generate = require('markdown-it-testgen');
 
@@ -62,11 +62,11 @@ describe('Renderer tests', function() {
     });
     generate(path.join(__dirname, 'fixtures/render-media-custom-attributes.txt'), { header: true }, newMd);
   });
-  describe('Render media with customized messages', function() {
+  describe('Render media with customized messages passed as option', function() {
     const newMd = new MarkdownIt();
     // Prevent re-using altered messages across instances
     Reflect.deleteProperty(require.cache, require.resolve('../lib/index'));
-    const newHtml5Media = require('../lib/index');
+    const newHtml5Media = require('../lib/index').html5Media;
     const messages = {
       en: {
         'html5 video not supported': 'Cannot play video.',
@@ -80,11 +80,24 @@ describe('Renderer tests', function() {
     });
     generate(path.join(__dirname, 'fixtures/render-media-custom-messages.txt'), { header: true }, newMd);
   });
+  describe('Render media with partially customized messages', function() {
+    const newMd = new MarkdownIt();
+    // Prevent re-using altered messages across instances
+    Reflect.deleteProperty(require.cache, require.resolve('../lib/index'));
+    const newHtml5Media = require('../lib/index').html5Media;
+    const messages = require('../lib/index').messages;
+    messages.en['html5 video not supported'] = 'CANNOT PLAY VIDEO.';
+    newMd.use(newHtml5Media, {
+      messages
+    });
+    generate(path.join(__dirname, 'fixtures/render-media-partial-custom-messages.txt'), { header: true }, newMd);
+  });
+
   describe('Render media with customized translation function', function() {
     const newMd = new MarkdownIt();
     // Prevent re-using altered translate function across instances
     Reflect.deleteProperty(require.cache, require.resolve('../lib/index'));
-    const newHtml5Media = require('../lib/index');
+    const newHtml5Media = require('../lib/index').html5Media;
     const translateFn = (language, messageKey, messageParams) => {
       const p = messageParams ? ` with parameter(s) ${messageParams}` : '';
       return `No translation for ${messageKey}${p}`;

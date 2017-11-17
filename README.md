@@ -18,7 +18,8 @@ Key differences:
 
 ````javascript
 const md = require('markdown-it')();
-const html5Media = require('markdown-it-html5-media');
+// Destructuring assignment; we also export UI messages & media type detection
+const { html5Media } = require('markdown-it-html5-media');
 md.use(html5Media);
 console.log(md.render('![text](video.mp4)'));
 ````
@@ -60,6 +61,20 @@ You can <a href="audio.mp3" download>download the file</a> instead.
 </audio></p>
 ````
 
+## Media type detection
+
+This module detects the media type by examining the file extension
+(case-insensitive). The valid audio and video extensions are defined
+[here](https://eloquence.github.io/markdown-it-html5-media/index.js.html#line15).
+
+If you need to perform an identical media type detection outside the module,
+you can import the `guessMediaType` function
+([docs](https://eloquence.github.io/markdown-it-html5-media/HTML5Media.html#.guessMediaType)):
+
+````javascript
+const { guessMediaType } = require('markdown-it-html5-media');
+````
+
 ## Custom messages
 
 You can customize the fallback text. This text will only be shown to users whose browser does not support HTML5 video or audio at all. %s is used as a substitution marker for the filename or the description.
@@ -91,6 +106,14 @@ Cannot play video.
 Download <a href="video.mp4">file</a>.
 Description: text
 </video></p>
+````
+
+If you only want to change some of the text, you can import the `messages`
+object from the module and partially alter its contents:
+
+````javascript
+const { html5Media, messages } = require('markdown-it-html5-media');
+messages.en['html5 vide not supported'] = 'Cannot play video.';
 ````
 
 ## Translation
