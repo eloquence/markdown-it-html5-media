@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "browserify": "^14.5.0",
     "jsdoc": "^3.5.5",
     "markdown-it-testgen": "^0.1.4",
