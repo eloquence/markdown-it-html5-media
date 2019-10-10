@@ -20,7 +20,7 @@
   "author": "Erik Moeller <eloquence@gmail.com> (https://twitter.com/xirzon)",
   "license": "CC0-1.0",
   "dependencies": {
-    "markdown-it": "^8.4.0"
+    "markdown-it": "^10.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
