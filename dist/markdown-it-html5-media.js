@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.html5Media = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.html5Media = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
 /* eslint complexity: "off" */
 
@@ -8,14 +8,18 @@
  *
  * @namespace HTML5Media
  */
-
 // We can only detect video/audio files from the extension in the URL.
 // We ignore MP1 and MP2 (not in active use) and default to video for ambiguous
 // extensions (MPG, MP4)
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var validAudioExtensions = ['aac', 'm4a', 'mp3', 'oga', 'ogg', 'wav'];
 var validVideoExtensions = ['mp4', 'm4v', 'ogv', 'webm', 'mpg', 'mpeg'];
-
 /**
  * @property {Object} messages
  * @property {Object} messages.languageCode
@@ -25,6 +29,7 @@ var validVideoExtensions = ['mp4', 'm4v', 'ogv', 'webm', 'mpg', 'mpeg'];
  *  message key
  * @typedef {Object} MessagesObj
  */
+
 var messages = {
   en: {
     'html5 video not supported': 'Your browser does not support playing HTML5 video.',
@@ -33,7 +38,6 @@ var messages = {
     'html5 media description': 'Here is a description of the content: %s'
   }
 };
-
 /**
  * You can override this function using options.translateFn.
  *
@@ -48,44 +52,32 @@ var messages = {
  *  the translation to use
  * @memberof HTML5Media
  */
-var translate = function translate(language, messageKey, messageParams) {
 
+var translate = function translate(language, messageKey, messageParams) {
   // Revert back to English default if no message object, or no translation
   // for this language
   if (!messages[language] || !messages[language][messageKey]) language = 'en';
-
   if (!messages[language]) return '';
-
   var message = messages[language][messageKey] || '';
 
   if (messageParams) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iterator = _createForOfIteratorHelper(messageParams),
+        _step;
 
     try {
-      for (var _iterator = messageParams[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var param = _step.value;
-
         message = message.replace('%s', param);
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _iterator.e(err);
     } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
+      _iterator.f();
     }
-  }return message;
-};
+  }
 
+  return message;
+};
 /**
  * A fork of the built-in image tokenizer which guesses video/audio files based
  * on their extension, and tokenizes them accordingly.
@@ -99,80 +91,70 @@ var translate = function translate(language, messageKey, messageParams) {
  * @returns {Boolean}
  * @memberof HTML5Media
  */
+
+
 function tokenizeImagesAndMedia(state, silent, md) {
-  var attrs = void 0,
-      code = void 0,
-      content = void 0,
-      label = void 0,
-      labelEnd = void 0,
-      labelStart = void 0,
-      pos = void 0,
-      ref = void 0,
-      res = void 0,
-      title = void 0,
-      token = void 0,
-      tokens = void 0,
-      start = void 0;
+  var attrs, code, content, label, labelEnd, labelStart, pos, ref, res, title, token, tokens, start;
   var href = '',
       oldPos = state.pos,
-      max = state.posMax;
+      max = state.posMax; // Exclamation mark followed by open square bracket - ![ - otherwise abort
 
-  // Exclamation mark followed by open square bracket - ![ - otherwise abort
   if (state.src.charCodeAt(state.pos) !== 0x21 || state.src.charCodeAt(state.pos + 1) !== 0x5B) return false;
-
   labelStart = state.pos + 2;
-  labelEnd = state.md.helpers.parseLinkLabel(state, state.pos + 1, false);
+  labelEnd = state.md.helpers.parseLinkLabel(state, state.pos + 1, false); // Parser failed to find ']', so it's not a valid link
 
-  // Parser failed to find ']', so it's not a valid link
   if (labelEnd < 0) return false;
-
   pos = labelEnd + 1;
+
   if (pos < max && state.src.charCodeAt(pos) === 0x28) {
     // Parenthesis: (
     //
     // Inline link
     //
-
     // [link](  <href>  "title"  )
     //        ^^ skipping these spaces
     pos++;
+
     for (; pos < max; pos++) {
       code = state.src.charCodeAt(pos);
       if (!md.utils.isSpace(code) && code !== 0x0A) // LF \n
         break;
     }
-    if (pos >= max) return false;
 
-    // [link](  <href>  "title"  )
+    if (pos >= max) return false; // [link](  <href>  "title"  )
     //          ^^^^^^ parsing link destination
+
     start = pos;
     res = state.md.helpers.parseLinkDestination(state.src, pos, state.posMax);
+
     if (res.ok) {
       href = state.md.normalizeLink(res.str);
+
       if (state.md.validateLink(href)) {
         pos = res.pos;
       } else {
         href = '';
       }
-    }
-
-    // [link](  <href>  "title"  )
+    } // [link](  <href>  "title"  )
     //                ^^ skipping these spaces
+
+
     start = pos;
+
     for (; pos < max; pos++) {
       code = state.src.charCodeAt(pos);
       if (!md.utils.isSpace(code) && code !== 0x0A) break;
-    }
-
-    // [link](  <href>  "title"  )
+    } // [link](  <href>  "title"  )
     //                  ^^^^^^^ parsing link title
+
+
     res = state.md.helpers.parseLinkTitle(state.src, pos, state.posMax);
+
     if (pos < max && start !== pos && res.ok) {
       title = res.str;
-      pos = res.pos;
-
-      // [link](  <href>  "title"  )
+      pos = res.pos; // [link](  <href>  "title"  )
       //                         ^^ skipping these spaces
+
       for (; pos < max; pos++) {
         code = state.src.charCodeAt(pos);
         if (!md.utils.isSpace(code) && code !== 0x0A) break;
@@ -186,6 +168,7 @@ function tokenizeImagesAndMedia(state, silent, md) {
       state.pos = oldPos;
       return false;
     }
+
     pos++;
   } else {
     //
@@ -197,6 +180,7 @@ function tokenizeImagesAndMedia(state, silent, md) {
       // Bracket: [
       start = pos + 1;
       pos = state.md.helpers.parseLinkLabel(state, pos);
+
       if (pos >= 0) {
         label = state.src.slice(start, pos++);
       } else {
@@ -204,48 +188,41 @@ function tokenizeImagesAndMedia(state, silent, md) {
       }
     } else {
       pos = labelEnd + 1;
-    }
-
-    // covers label === '' and label === undefined
+    } // covers label === '' and label === undefined
     // (collapsed reference link and shortcut reference link respectively)
-    if (!label) label = state.src.slice(labelStart, labelEnd);
 
+
+    if (!label) label = state.src.slice(labelStart, labelEnd);
     ref = state.env.references[md.utils.normalizeReference(label)];
+
     if (!ref) {
       state.pos = oldPos;
       return false;
     }
+
     href = ref.href;
     title = ref.title;
   }
 
   state.pos = pos;
   state.posMax = max;
-
-  if (silent) return true;
-
-  // We found the end of the link, and know for a fact it's a valid link;
+  if (silent) return true; // We found the end of the link, and know for a fact it's a valid link;
   // so all that's left to do is to call tokenizer.
+
   content = state.src.slice(labelStart, labelEnd);
-
   state.md.inline.parse(content, state.md, state.env, tokens = []);
-
   var mediaType = guessMediaType(href);
   var tag = mediaType == 'image' ? 'img' : mediaType;
-
   token = state.push(mediaType, tag, 0);
   token.attrs = attrs = [['src', href]];
   if (mediaType == 'image') attrs.push(['alt', '']);
   token.children = tokens;
   token.content = content;
-
   if (title) attrs.push(['title', title]);
-
   state.pos = pos;
   state.posMax = max;
   return true;
 }
-
 /**
  * Guess the media type represented by a URL based on the file extension,
  * if any
@@ -257,13 +234,14 @@ function tokenizeImagesAndMedia(state, silent, md) {
  *  or 'video'
  * @memberof HTML5Media
  */
+
+
 function guessMediaType(url) {
   var extensionMatch = url.match(/\.([^/.]+)$/);
   if (extensionMatch === null) return 'image';
   var extension = extensionMatch[1];
   if (validAudioExtensions.indexOf(extension.toLowerCase()) != -1) return 'audio';else if (validVideoExtensions.indexOf(extension.toLowerCase()) != -1) return 'video';else return 'image';
 }
-
 /**
  * Render tokens of the video/audio type to HTML5 tags
  *
@@ -281,26 +259,22 @@ function guessMediaType(url) {
  *  rendered token
  * @memberof HTML5Media
  */
+
+
 function renderMedia(tokens, idx, options, env, md) {
   var token = tokens[idx];
   var type = token.type;
   if (type !== 'video' && type !== 'audio') return '';
-  var attrs = options.html5Media[type + 'Attrs'].trim();
-  if (attrs) attrs = ' ' + attrs;
+  var attrs = options.html5Media["".concat(type, "Attrs")].trim();
+  if (attrs) attrs = ' ' + attrs; // We'll always have a URL for non-image media: they are detected by URL
 
-  // We'll always have a URL for non-image media: they are detected by URL
-  var url = token.attrs[token.attrIndex('src')][1];
+  var url = token.attrs[token.attrIndex('src')][1]; // Title is set like this: ![descriptive text](video.mp4 "title")
 
-  // Title is set like this: ![descriptive text](video.mp4 "title")
-  var title = token.attrIndex('title') != -1 ? ' title="' + md.utils.escapeHtml(token.attrs[token.attrIndex('title')][1]) + '"' : '';
-
-  var fallbackText = translate(env.language, 'html5 ' + type + ' not supported') + '\n' + translate(env.language, 'html5 media fallback link', [url]);
-
+  var title = token.attrIndex('title') != -1 ? " title=\"".concat(md.utils.escapeHtml(token.attrs[token.attrIndex('title')][1]), "\"") : '';
+  var fallbackText = translate(env.language, "html5 ".concat(type, " not supported")) + '\n' + translate(env.language, 'html5 media fallback link', [url]);
   var description = token.content ? '\n' + translate(env.language, 'html5 media description', [md.utils.escapeHtml(token.content)]) : '';
-
-  return '<' + type + ' src="' + url + '"' + title + attrs + '>\n' + ('' + fallbackText + description + '\n') + ('</' + type + '>');
+  return "<".concat(type, " src=\"").concat(url, "\"").concat(title).concat(attrs, ">\n") + "".concat(fallbackText).concat(description, "\n") + "</".concat(type, ">");
 }
-
 /**
  * The main plugin function, exported as module.exports
  *
@@ -316,15 +290,14 @@ function renderMedia(tokens, idx, options, env, md) {
  *  human-readable text that is part of the output
  * @memberof HTML5Media
  */
+
+
 function html5Media(md) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
   if (options.messages) messages = options.messages;
   if (options.translateFn) translate = options.translateFn;
-
   var videoAttrs = options.videoAttrs !== undefined ? options.videoAttrs : 'controls class="html5-video-player"';
   var audioAttrs = options.audioAttrs !== undefined ? options.audioAttrs : 'controls class="html5-audio-player"';
-
   md.inline.ruler.at('image', function (tokens, silent) {
     return tokenizeImagesAndMedia(tokens, silent, md);
   });
@@ -340,7 +313,8 @@ function html5Media(md) {
 
 module.exports = {
   html5Media: html5Media,
-  messages: messages, // For partial customization of messages
+  messages: messages,
+  // For partial customization of messages
   guessMediaType: guessMediaType
 };
 },{}]},{},[1])(1)
