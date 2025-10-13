@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-html5-media",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Lightweight support for HTML5 video/audio using markdown image syntax",
   "repository": "https://github.com/eloquence/markdown-it-html5-media.git",
   "main": "lib/index.js",
@@ -19,8 +19,8 @@
   ],
   "author": "Erik Moeller <eloquence@gmail.com> (https://twitter.com/xirzon)",
   "license": "CC0-1.0",
-  "dependencies": {
-    "markdown-it": "^12.3.2"
+  "peerDependencies": {
+    "markdown-it": ">=13 <15"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -29,10 +29,11 @@
     "browserify": "^17.0.0",
     "jsdoc": "^3.6.10",
     "markdown-it-testgen": "^0.1.6",
+    "markdown-it": "^14.1.0",
     "mocha": "^9.2.0",
     "uglify-js": "^3.12.1"
   },
   "engines": {
-    "node": ">=10.0"
+    "node": ">=20.0.0"
   }
 }

@@ -1,3 +1,8 @@
+# 0.8.0
+
+- Declare compatibility with markdown-it v13–v14 via peer dependency
+- Raise minimum Node to 20 and update build/test deps; rebuild dist bundle
+
 # 0.7.0
 
 - markdown-it & dev dependencies updated
