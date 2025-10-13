@@ -2,7 +2,10 @@
   "name": "markdown-it-html5-media",
   "version": "0.8.0",
   "description": "Lightweight support for HTML5 video/audio using markdown image syntax",
-  "repository": "https://github.com/eloquence/markdown-it-html5-media.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eloquence/markdown-it-html5-media.git"
+  },
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
