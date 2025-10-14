@@ -20,7 +20,7 @@
     "markdown-it-plugin",
     "markdown-it"
   ],
-  "author": "Erik Moeller <eloquence@gmail.com> (https://twitter.com/xirzon)",
+  "author": "Erik Moeller <eloquence@gmail.com>",
   "license": "CC0-1.0",
   "peerDependencies": {
     "markdown-it": ">=13 <15"
